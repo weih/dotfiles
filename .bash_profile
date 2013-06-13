@@ -40,3 +40,6 @@ which grunt &> /dev/null && eval "$(grunt --completion=bash)"
 
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
+
+# load Boxen env
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
