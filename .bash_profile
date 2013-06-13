@@ -45,4 +45,4 @@ which grunt &> /dev/null && eval "$(grunt --completion=bash)"
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 
 # Start Emacs Daemon while loagin
-emacs --daemon
+# emacs --daemon
