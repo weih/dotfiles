@@ -251,3 +251,13 @@ function gi() {
 	local IFS=,
 	eval npm install --save-dev grunt-{"$*"}
 }
+
+function up()
+{
+    local DIR=$PWD
+    local TARGET=$1
+    while [ ! -e $DIR/$TARGET -a $DIR != "/" ]; do
+        DIR=$(dirname $DIR)
+    done
+    test $DIR != "/" && echo $DIR/$TARGET
+}
