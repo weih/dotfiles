@@ -46,3 +46,9 @@ which grunt &> /dev/null && eval "$(grunt --completion=bash)"
 
 # Start Emacs Daemon while loagin
 # emacs --daemon
+
+[[ -s /Users/haowei/.nvm/nvm.sh ]] && . /Users/haowei/.nvm/nvm.sh # This loads NVM
+
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+
+. ~/.dotfiles/z/z.sh
