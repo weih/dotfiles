@@ -18,7 +18,7 @@ alias e="emacsclient -ct"
 # alias emacs="emacsclient"
 alias es="emacs --daemon"
 alias v="vim"
-alias m="mvim ."
+alias m="mvim"
 alias s="subl ."
 alias o="open"
 alias oo="open ."
@@ -28,6 +28,7 @@ alias tree2="tree -L 2"
 alias eda="$EDITOR ~/.dotfiles/aliases"
 alias edf="$EDITOR ~/.dotfiles/functions"
 alias cdl="cd $* && l"
+alias vrc="vim ~/.vimrc"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
