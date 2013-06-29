@@ -33,7 +33,7 @@ brew install homebrew/dupes/grep
 #brew install homebrew/dupes/screen
 
 # Install other useful binaries
-brew install ack
+# brew install ack
 #brew install exiv2
 brew install git
 #brew install imagemagick
@@ -46,21 +46,24 @@ brew install tree
 brew install webkit2png
 brew install zopfli
 brew install ncurses
+brew install ag
+brew install mvim
+brew install ctags
 
 #brew tap homebrew/versions
 #brew install lua52
 
 # Install native apps
-brew tap phinze/homebrew-cask
-brew install brew-cask
+# brew tap phinze/homebrew-cask
+# brew install brew-cask
 
-function installcask() {
-	if brew cask info "${@}" | grep "Not installed" > /dev/null; then
-		brew cask install "${@}"
-	else
-		echo "${@} is already installed."
-	fi
-}
+# function installcask() {
+# 	if brew cask info "${@}" | grep "Not installed" > /dev/null; then
+# 		brew cask install "${@}"
+# 	else
+# 		echo "${@} is already installed."
+# 	fi
+# }
 
 #installcask dropbox
 #installcask google-chrome

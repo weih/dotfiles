@@ -20,6 +20,8 @@ ln -s ~/.dotfiles/curlrc ~/.curlrc
 ln -s ~/.dotfiles/hgignore ~/.hgignore
 ln -s ~/.dotfiles/inputrc ~/.inputrc
 ln -s ~/.dotfiles/wgetrc ~/.wgetrc
+ln -s ~/.dotfiles/vimrc ~/.vimrc
+ln -s ~/.dotfiles/gvimrc ~/.gvimrc
 
 echo "Installing Key Bindings"
 mkdir -p ~/Library/KeyBindings

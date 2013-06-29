@@ -27,8 +27,8 @@ alias dvtm="dvtm 2> log -M"
 alias tree2="tree -L 2"
 alias eda="$EDITOR ~/.dotfiles/aliases"
 alias edf="$EDITOR ~/.dotfiles/functions"
-alias cdl="cd $* && l"
 alias vrc="vim ~/.vimrc"
+alias mrc="mvim ~/.vimrc"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
