@@ -9,7 +9,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 "Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdcommenter'
+"Bundle 'scrooloose/nerdcommenter'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'tpope/vim-surround'
@@ -77,6 +77,7 @@ set ignorecase
 set smartcase
 "set nowrapscan
 set autoindent
+set smartindent
 set noshowmode
 "set cindent
 set showcmd
@@ -154,8 +155,11 @@ noremap <c-a> <HOME>
 inoremap <c-a> <HOME>
 noremap <d-j> <c-d>
 noremap <d-k> <c-u>
+"Toggle comments
+noremap <D-'> gcc
 
 nmap <c-o> :CtrlPBuffer<CR>
+nnoremap <c-s> :Ack <c-r><c-w><CR>
 
 nmap <F8> :TagbarToggle<CR>
 nmap <F5> :SyntasticCheck<CR>

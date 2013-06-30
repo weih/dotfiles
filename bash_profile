@@ -52,3 +52,5 @@ which grunt &> /dev/null && eval "$(grunt --completion=bash)"
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 . ~/.dotfiles/z/z.sh
+
+# . ~/.dotfiles/acd_func.sh

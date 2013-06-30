@@ -358,3 +358,13 @@ function extract() {
 	fi
 }
 
+
+function cs()
+{
+  if [ $# -eq 0 ]; then
+    pushd > /dev/null && l
+  else
+    pushd > /dev/null "$*" && l
+  fi
+}
+alias cd='cs'

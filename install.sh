@@ -22,6 +22,7 @@ ln -s ~/.dotfiles/inputrc ~/.inputrc
 ln -s ~/.dotfiles/wgetrc ~/.wgetrc
 ln -s ~/.dotfiles/vimrc ~/.vimrc
 ln -s ~/.dotfiles/gvimrc ~/.gvimrc
+ln -s ~/.dotfiles/ackrc ~/.ackrc
 
 echo "Installing Key Bindings"
 mkdir -p ~/Library/KeyBindings
