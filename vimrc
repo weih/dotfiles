@@ -156,7 +156,7 @@ inoremap <c-a> <HOME>
 noremap <d-j> <c-d>
 noremap <d-k> <c-u>
 "Toggle comments
-noremap <D-'> gcc
+map <d-/> gcc
 
 nmap <c-o> :CtrlPBuffer<CR>
 nnoremap <c-s> :Ack <c-r><c-w><CR>
