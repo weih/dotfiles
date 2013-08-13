@@ -11,7 +11,7 @@ Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 "Bundle 'scrooloose/nerdcommenter'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'tpope/vim-surround'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'scrooloose/nerdtree'
@@ -24,32 +24,44 @@ Bundle 'scrooloose/nerdtree'
 "Bundle 'Townk/vim-autoclose'
 Bundle 'godlygeek/tabular'
 Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/syntastic'
+" Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-unimpaired'
 "Bundle 'tpope/vim-repeat'
 Bundle 'mileszs/ack.vim'
 "Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'Yggdroot/indentLine'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'tpope/vim-haml'
+"Bundle 'Yggdroot/indentLine'
+"Bundle 'airblade/vim-gitgutter'
+"Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
+"Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
 Bundle 'ap/vim-css-color'
 Bundle 'jiangmiao/auto-pairs'
 "Bundle 'xolox/vim-misc'
 "Bundle 'xolox/vim-session'
 "Bundle 'myusuf3/numbers.vim'
 "Bundle 'tpope/vim-obsession'
-Bundle 'plasticboy/vim-markdown'
+"Bundle 'plasticboy/vim-markdown'
+Bundle 'tpope/vim-markdown'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'Valloric/YouCompleteMe'
+" Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'thoughtbot/vim-rspec'
 " Bundle 'wincent/Command-T'
 Bundle 'gregsexton/MatchTag'
-Bundle 'tpope/vim-endwise'
-Bundle 'SirVer/ultisnips'
+"Bundle 'tpope/vim-endwise'
+"Bundle 'SirVer/ultisnips'
 Bundle 'vim-scripts/ZoomWin'
 "Bundle 'Trevoke/ultisnips-rspec'
+"Bundle 'suan/vim-instant-markdown'
+"Bundle 'joeytwiddle/sexy_scroller.vim'
+Bundle 't9md/vim-ruby-xmpfilter'
+"Bundle 'Rykka/colorv.vim'
+"Bundle 'mattn/webapi-vim'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+"Bundle 'Spaceghost/vim-matchit'
+"Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'elixir-lang/vim-elixir'
 
 filetype plugin indent on     " required!
 
@@ -59,9 +71,9 @@ set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids "
 set history=10000
 set hidden
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set laststatus=2
 " Broken down into easily includeable segments
 set statusline=%<%f\                     " Filename
@@ -100,8 +112,8 @@ set t_ti= t_te=
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set list
-set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace "
+" set list
+" set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace "
 
 syntax enable
 syntax on
@@ -109,19 +121,24 @@ syntax on
 " Colorscheme
  set background=dark
  set t_Co=256 " 256 colors
- colorscheme Monokai
+ colorscheme molokai
 
 " Folding
-set foldmethod=indent
-set foldnestmax=2
+set foldmethod=syntax
+set foldnestmax=6
 set nofoldenable
 hi Folded ctermfg=216 ctermbg=0
+
+" vim-textobj-rubyblock
+runtime macros/matchit.vim
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Bindings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader=","
+
+imap jk <Esc>
 
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
@@ -165,6 +182,16 @@ nmap <F8> :TagbarToggle<CR>
 nmap <F5> :SyntasticCheck<CR>
 nmap <F12> :w<CR>:source %<CR>:BundleInstall<CR>
 nmap <c-b> :w<CR>:!ruby %<CR>
+
+:nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
+
+nmap <buffer> <F5> <Plug>(xmpfilter-run)
+xmap <buffer> <F5> <Plug>(xmpfilter-run)
+imap <buffer> <F5> <Plug>(xmpfilter-run)
+
+nmap <buffer> <F4> <Plug>(xmpfilter-mark)
+xmap <buffer> <F4> <Plug>(xmpfilter-mark)
+imap <buffer> <F4> <Plug>(xmpfilter-mark)
 
 " sudo
 cmap w!! w !sudo tee % >/dev/null

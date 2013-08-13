@@ -24,6 +24,7 @@ ln -s ~/.dotfiles/vimrc ~/.vimrc
 ln -s ~/.dotfiles/gvimrc ~/.gvimrc
 ln -s ~/.dotfiles/ackrc ~/.ackrc
 ln -s ~/.dotfiles/pryrc ~/.pryrc
+ln -s ~/.dotfiles/gemrc ~/.gemrc
 
 echo "Installing Key Bindings"
 mkdir -p ~/Library/KeyBindings
