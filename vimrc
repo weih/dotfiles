@@ -12,7 +12,7 @@ Bundle 'kien/ctrlp.vim'
 "Bundle 'scrooloose/nerdcommenter'
 Bundle 'tomtom/tcomment_vim'
 "Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-surround'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'scrooloose/nerdtree'
 "Bundle 'jistr/vim-nerdtree-tabs'
@@ -23,7 +23,8 @@ Bundle 'scrooloose/nerdtree'
 "Bundle 'honza/vim-snippets'
 "Bundle 'Townk/vim-autoclose'
 Bundle 'godlygeek/tabular'
-Bundle 'majutsushi/tagbar'
+Bundle 'junegunn/vim-easy-align'
+"Bundle 'majutsushi/tagbar'
 " Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-unimpaired'
 "Bundle 'tpope/vim-repeat'
@@ -35,14 +36,14 @@ Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-fugitive'
 "Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
 Bundle 'ap/vim-css-color'
-Bundle 'jiangmiao/auto-pairs'
+"Bundle 'jiangmiao/auto-pairs'
 "Bundle 'xolox/vim-misc'
 "Bundle 'xolox/vim-session'
 "Bundle 'myusuf3/numbers.vim'
 "Bundle 'tpope/vim-obsession'
 "Bundle 'plasticboy/vim-markdown'
 Bundle 'tpope/vim-markdown'
-Bundle 'terryma/vim-multiple-cursors'
+"Bundle 'terryma/vim-multiple-cursors'
 " Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'thoughtbot/vim-rspec'
@@ -54,7 +55,7 @@ Bundle 'vim-scripts/ZoomWin'
 "Bundle 'Trevoke/ultisnips-rspec'
 "Bundle 'suan/vim-instant-markdown'
 "Bundle 'joeytwiddle/sexy_scroller.vim'
-Bundle 't9md/vim-ruby-xmpfilter'
+"Bundle 't9md/vim-ruby-xmpfilter'
 "Bundle 'Rykka/colorv.vim'
 "Bundle 'mattn/webapi-vim'
 Bundle 'kana/vim-textobj-user'
@@ -62,6 +63,8 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 "Bundle 'Spaceghost/vim-matchit'
 "Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'roman/golden-ratio'
+"Bundle 'c9s/colorselector.vim'
 
 filetype plugin indent on     " required!
 
@@ -102,7 +105,7 @@ set wildmode=longest,list
 set wildmenu
 set splitbelow
 set splitright
-"set spell
+set spell
 set dictionary=/usr/share/dict/words
 set hls!
 " Prevent Vim from clobbering the scrollback buffer. See
@@ -119,9 +122,13 @@ syntax enable
 syntax on
 
 " Colorscheme
- set background=dark
- set t_Co=256 " 256 colors
- colorscheme molokai
+set background=dark
+set t_Co=256 " 256 colors
+colorscheme jellybeans
+hi clear SpellBad
+hi clear SpellLocal
+hi clear SpellCap
+hi clear SpellRare
 
 " Folding
 set foldmethod=syntax
@@ -149,6 +156,7 @@ nnoremap j gj
 nnoremap k gk
 
 map <leader>y "*y
+nnoremap <leader><leader> <c-^>
 
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
@@ -166,32 +174,68 @@ map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
-noremap <c-e> <END>
-inoremap <c-e> <END>
-noremap <c-a> <HOME>
-inoremap <c-a> <HOME>
-noremap <d-j> <c-d>
-noremap <d-k> <c-u>
-"Toggle comments
-map <d-/> gcc
+nmap <leader>" ci"
+nmap <leader>' ci'
+imap <c-l> <space>=><space>
+nnoremap Q <nop>
 
-nmap <c-o> :CtrlPBuffer<CR>
-nnoremap <c-s> :Ack <c-r><c-w><CR>
+:nmap <c-s> :w<CR>
+:imap <c-s> <Esc>:w<CR>a
+:imap <c-s> <Esc><c-s>
 
-nmap <F8> :TagbarToggle<CR>
-nmap <F5> :SyntasticCheck<CR>
+" noremap <c-e> <END>
+" inoremap <c-e> <END>
+" noremap <c-a> <HOME>
+" inoremap <c-a> <HOME>
+" noremap <d-j> <c-d>
+" noremap <d-k> <c-u>
+" "Toggle comments
+" map <d-/> gcc
+
+" nmap <c-o> :CtrlPBuffer<CR>
+nnoremap <leader>ac :Ack <c-r><c-w><CR>
+nnoremap <leader>ak :Ack<space>
+
+" ctags stuff
+nnoremap <leader>gt :!ctags -R .<cr><cr>
+nnoremap <leader>ct :tag<space>
+
+" nmap <F8> :TagbarToggle<CR>
+" nmap <F5> :SyntasticCheck<CR>
 nmap <F12> :w<CR>:source %<CR>:BundleInstall<CR>
-nmap <c-b> :w<CR>:!ruby %<CR>
+" nmap <c-b> :w<CR>:!ruby %<CR>
+noremap <leader>t :w\|:!rake<cr>
+noremap <leader>r :w\|:!ruby %<cr>
 
 :nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
 
-nmap <buffer> <F5> <Plug>(xmpfilter-run)
-xmap <buffer> <F5> <Plug>(xmpfilter-run)
-imap <buffer> <F5> <Plug>(xmpfilter-run)
+" Toggle for paste from other program
+nnoremap <F3> :set invpaste paste?<CR>
+imap <F3> <C-O>:set invpaste paste?<CR>
+set pastetoggle=<F3>
 
-nmap <buffer> <F4> <Plug>(xmpfilter-mark)
-xmap <buffer> <F4> <Plug>(xmpfilter-mark)
-imap <buffer> <F4> <Plug>(xmpfilter-mark)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MULTIPURPOSE TAB KEY
+" Indent if we're at the beginning of a line. Else, do completion.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+" nmap <buffer> <F5> <Plug>(xmpfilter-run)
+" xmap <buffer> <F5> <Plug>(xmpfilter-run)
+" imap <buffer> <F5> <Plug>(xmpfilter-run)
+" 
+" nmap <buffer> <F4> <Plug>(xmpfilter-mark)
+" xmap <buffer> <F4> <Plug>(xmpfilter-mark)
+" imap <buffer> <F4> <Plug>(xmpfilter-mark)
 
 " sudo
 cmap w!! w !sudo tee % >/dev/null

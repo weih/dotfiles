@@ -53,4 +53,4 @@ which grunt &> /dev/null && eval "$(grunt --completion=bash)"
 
 . ~/.dotfiles/z/z.sh
 
-# . ~/.dotfiles/acd_func.sh
+stty stop undef

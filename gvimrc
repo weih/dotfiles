@@ -1,13 +1,10 @@
-" Use 14pt Menlo
-" set guifont=MonacoB2\ Bold:h12
-set guifont=Monaco\ for\ Powerline:h14
+set guifont=MonacoB\ Bold:h14
+" set guifont=Monaco\ for\ Powerline:h14
 set guioptions-=rL
 set guicursor+=a:blinkon0
 color jellybeans
 
-"set nonumber
-" Better line-height
-" set linespace=4
-"
-
-
+hi clear SpellBad
+hi clear SpellLocal
+hi clear SpellCap
+hi clear SpellRare

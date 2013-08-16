@@ -35,6 +35,7 @@ alias m="mvim --remote-silent"
 alias s="subl ."
 alias o="open"
 alias oo="open ."
+alias gems="cd ~/gems"
 
 alias dvtm="dvtm 2> log -M"
 alias tree2="tree -L 2"
