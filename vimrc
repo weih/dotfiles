@@ -24,7 +24,7 @@ Bundle 'scrooloose/nerdtree'
 "Bundle 'Townk/vim-autoclose'
 Bundle 'godlygeek/tabular'
 Bundle 'junegunn/vim-easy-align'
-"Bundle 'majutsushi/tagbar'
+Bundle 'majutsushi/tagbar'
 " Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-unimpaired'
 "Bundle 'tpope/vim-repeat'
@@ -200,7 +200,7 @@ nnoremap <leader>ak :Ack<space>
 nnoremap <leader>gt :!ctags -R .<cr><cr>
 nnoremap <leader>ct :tag<space>
 
-" nmap <F8> :TagbarToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 " nmap <F5> :SyntasticCheck<CR>
 nmap <F12> :w<CR>:source %<CR>:BundleInstall<CR>
 " nmap <c-b> :w<CR>:!ruby %<CR>
