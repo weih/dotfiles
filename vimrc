@@ -23,10 +23,10 @@ Bundle 'scrooloose/nerdtree'
 "Bundle 'honza/vim-snippets'
 "Bundle 'Townk/vim-autoclose'
 Bundle 'godlygeek/tabular'
-Bundle 'junegunn/vim-easy-align'
+" Bundle 'junegunn/vim-easy-align'
 Bundle 'majutsushi/tagbar'
 " Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-unimpaired'
+" Bundle 'tpope/vim-unimpaired'
 "Bundle 'tpope/vim-repeat'
 Bundle 'mileszs/ack.vim'
 "Bundle 'nathanaelkane/vim-indent-guides'
@@ -50,7 +50,7 @@ Bundle 'thoughtbot/vim-rspec'
 " Bundle 'wincent/Command-T'
 Bundle 'gregsexton/MatchTag'
 "Bundle 'tpope/vim-endwise'
-"Bundle 'SirVer/ultisnips'
+Bundle 'SirVer/ultisnips'
 Bundle 'vim-scripts/ZoomWin'
 "Bundle 'Trevoke/ultisnips-rspec'
 "Bundle 'suan/vim-instant-markdown'
@@ -60,11 +60,23 @@ Bundle 'vim-scripts/ZoomWin'
 "Bundle 'mattn/webapi-vim'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'tpope/vim-rails'
 "Bundle 'Spaceghost/vim-matchit'
 "Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'rodjek/vim-puppet'
 Bundle 'roman/golden-ratio'
+" Bundle 'mattn/emmet-vim'
+" Bundle 'pangloss/vim-javascript'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'w0ng/vim-hybrid'
+Bundle 'goatslacker/mango.vim'
+Bundle 'vim-scripts/harlequin'
+Bundle 'kchmck/vim-coffee-script'
+" Bundle 'othree/javascript-libraries-syntax.vim'
 "Bundle 'c9s/colorselector.vim'
+" Bundle 'rizzatti/funcoo.vim'
+" Bundle 'rizzatti/dash.vim'
 
 filetype plugin indent on     " required!
 
@@ -98,7 +110,7 @@ set noshowmode
 set showcmd
 set backspace=indent,eol,start
 set title
-set cursorline
+" set cursorline
 " set cmdheight=2
 set scrolloff=8
 set wildmode=longest,list
@@ -107,7 +119,7 @@ set splitbelow
 set splitright
 set spell
 set dictionary=/usr/share/dict/words
-set hls!
+" set hls!
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
 set t_ti= t_te=
@@ -125,6 +137,10 @@ syntax on
 set background=dark
 set t_Co=256 " 256 colors
 colorscheme jellybeans
+if has('gui_running')
+  colorscheme harlequin
+endif
+" colorscheme weih
 hi clear SpellBad
 hi clear SpellLocal
 hi clear SpellCap
@@ -136,9 +152,12 @@ set foldnestmax=6
 set nofoldenable
 hi Folded ctermfg=216 ctermbg=0
 
+" au FileType javascript call JavaScriptFold()
+
 " vim-textobj-rubyblock
 runtime macros/matchit.vim
 
+" let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function;m:member'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Bindings
@@ -178,10 +197,12 @@ nmap <leader>" ci"
 nmap <leader>' ci'
 imap <c-l> <space>=><space>
 nnoremap Q <nop>
+nnoremap <esc> :noh<return><esc>
+nmap <silent> <leader>d <Plug>DashSearch
 
-:nmap <c-s> :w<CR>
-:imap <c-s> <Esc>:w<CR>a
-:imap <c-s> <Esc><c-s>
+nmap <c-s> :w<CR>
+imap <c-s> <Esc>:w<CR>a
+imap <c-s> <Esc><c-s>
 
 " noremap <c-e> <END>
 " inoremap <c-e> <END>
@@ -197,8 +218,11 @@ nnoremap <leader>ac :Ack <c-r><c-w><CR>
 nnoremap <leader>ak :Ack<space>
 
 " ctags stuff
-nnoremap <leader>gt :!ctags -R .<cr><cr>
-nnoremap <leader>ct :tag<space>
+nnoremap <leader>ct :!ctags -R .<cr>
+
+" golden ratio
+nnoremap <leader>gr :GoldenRatioResize<cr>
+nnoremap <leader>gt :GoldenRatioToggle<cr>
 
 nmap <F8> :TagbarToggle<CR>
 " nmap <F5> :SyntasticCheck<CR>
@@ -206,6 +230,7 @@ nmap <F12> :w<CR>:source %<CR>:BundleInstall<CR>
 " nmap <c-b> :w<CR>:!ruby %<CR>
 noremap <leader>t :w\|:!rake<cr>
 noremap <leader>r :w\|:!ruby %<cr>
+noremap <leader>j :w\|:!node %<cr>
 
 :nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
 

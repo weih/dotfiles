@@ -1,6 +1,12 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH"
 
+# Http Proxy
+export http_proxy="127.0.0.1:8087"
+
+# Add Postgres.app bin to PATH
+PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.

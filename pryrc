@@ -42,6 +42,6 @@ rescue LoadError
 end
 
 begin
-  require "active_support/core_ext"
+  require "active_support"
 rescue LoadError
 end
