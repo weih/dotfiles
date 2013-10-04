@@ -2,7 +2,7 @@
 export PATH="$HOME/bin:$PATH"
 
 # Http Proxy
-export http_proxy="127.0.0.1:8087"
+# export http_proxy="127.0.0.1:8080"
 
 # Add Postgres.app bin to PATH
 PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"

@@ -71,12 +71,14 @@ Bundle 'roman/golden-ratio'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'goatslacker/mango.vim'
-Bundle 'vim-scripts/harlequin'
+" Bundle 'vim-scripts/harlequin'
+Bundle 'weih/vim-skittles-theme'
 Bundle 'kchmck/vim-coffee-script'
 " Bundle 'othree/javascript-libraries-syntax.vim'
 "Bundle 'c9s/colorselector.vim'
 " Bundle 'rizzatti/funcoo.vim'
 " Bundle 'rizzatti/dash.vim'
+" Bundle 'guns/xterm-color-table.vim'
 
 filetype plugin indent on     " required!
 
@@ -137,8 +139,9 @@ syntax on
 set background=dark
 set t_Co=256 " 256 colors
 colorscheme jellybeans
+" colorscheme skittles
 if has('gui_running')
-  colorscheme harlequin
+  colorscheme skittles
 endif
 " colorscheme weih
 hi clear SpellBad
@@ -152,7 +155,7 @@ set foldnestmax=6
 set nofoldenable
 hi Folded ctermfg=216 ctermbg=0
 
-" au FileType javascript call JavaScriptFold()
+au FileType javascript call JavaScriptFold()
 
 " vim-textobj-rubyblock
 runtime macros/matchit.vim
@@ -197,7 +200,7 @@ nmap <leader>" ci"
 nmap <leader>' ci'
 imap <c-l> <space>=><space>
 nnoremap Q <nop>
-nnoremap <esc> :noh<return><esc>
+" nnoremap <esc> :noh<return><esc>
 nmap <silent> <leader>d <Plug>DashSearch
 
 nmap <c-s> :w<CR>
@@ -216,6 +219,10 @@ imap <c-s> <Esc><c-s>
 " nmap <c-o> :CtrlPBuffer<CR>
 nnoremap <leader>ac :Ack <c-r><c-w><CR>
 nnoremap <leader>ak :Ack<space>
+
+" CtrlP
+nnoremap <leader>cm :CtrlPMRUFiles<cr>
+nnoremap <leader>cb :CtrlPBuffer<cr>
 
 " ctags stuff
 nnoremap <leader>ct :!ctags -R .<cr>
