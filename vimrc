@@ -13,7 +13,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'tomtom/tcomment_vim'
 "Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-surround'
-Bundle 'flazz/vim-colorschemes'
+" Bundle 'flazz/vim-colorschemes'
 Bundle 'scrooloose/nerdtree'
 "Bundle 'jistr/vim-nerdtree-tabs'
 "Bundle 'ervandew/supertab'
@@ -32,23 +32,23 @@ Bundle 'mileszs/ack.vim'
 "Bundle 'nathanaelkane/vim-indent-guides'
 "Bundle 'Yggdroot/indentLine'
 "Bundle 'airblade/vim-gitgutter'
-"Bundle 'tpope/vim-haml'
+" Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-fugitive'
 "Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
 Bundle 'ap/vim-css-color'
-"Bundle 'jiangmiao/auto-pairs'
+Bundle 'jiangmiao/auto-pairs'
 "Bundle 'xolox/vim-misc'
 "Bundle 'xolox/vim-session'
 "Bundle 'myusuf3/numbers.vim'
 "Bundle 'tpope/vim-obsession'
 "Bundle 'plasticboy/vim-markdown'
-Bundle 'tpope/vim-markdown'
+" Bundle 'tpope/vim-markdown'
 "Bundle 'terryma/vim-multiple-cursors'
 " Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'thoughtbot/vim-rspec'
 " Bundle 'wincent/Command-T'
-Bundle 'gregsexton/MatchTag'
+" Bundle 'gregsexton/MatchTag'
 "Bundle 'tpope/vim-endwise'
 Bundle 'SirVer/ultisnips'
 Bundle 'vim-scripts/ZoomWin'
@@ -64,21 +64,28 @@ Bundle 'tpope/vim-rails'
 "Bundle 'Spaceghost/vim-matchit'
 "Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'elixir-lang/vim-elixir'
-Bundle 'rodjek/vim-puppet'
+" Bundle 'rodjek/vim-puppet'
 Bundle 'roman/golden-ratio'
-" Bundle 'mattn/emmet-vim'
 " Bundle 'pangloss/vim-javascript'
 Bundle 'jelera/vim-javascript-syntax'
-Bundle 'w0ng/vim-hybrid'
-Bundle 'goatslacker/mango.vim'
+" Bundle 'w0ng/vim-hybrid'
+" Bundle 'goatslacker/mango.vim'
 " Bundle 'vim-scripts/harlequin'
-Bundle 'weih/vim-skittles-theme'
+" Bundle 'weih/vim-skittles-theme'
 Bundle 'kchmck/vim-coffee-script'
 " Bundle 'othree/javascript-libraries-syntax.vim'
 "Bundle 'c9s/colorselector.vim'
 " Bundle 'rizzatti/funcoo.vim'
 " Bundle 'rizzatti/dash.vim'
 " Bundle 'guns/xterm-color-table.vim'
+" Bundle 'mattn/gist-vim'
+" Bundle 'mattn/emmet-vim'
+" Bundle 'klen/python-mode'
+" Bundle 'weih/vim-mac-classic-alt'
+" Bundle 'tpope/vim-rbenv'
+" Bundle 'freitass/todo.txt-vim'
+" Bundle 'bilalq/lite-dfm'
+" Bundle 'szw/vim-ctrlspace'
 
 filetype plugin indent on     " required!
 
@@ -100,6 +107,7 @@ set statusline+=\ [%{&ff}/%Y]            " Filetype
 set statusline+=\ [%{getcwd()}]          " Current dir
 set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 set expandtab
+set showtabline=2
 set hlsearch
 set incsearch
 set ignorecase
@@ -112,7 +120,7 @@ set noshowmode
 set showcmd
 set backspace=indent,eol,start
 set title
-" set cursorline
+set cursorline
 " set cmdheight=2
 set scrolloff=8
 set wildmode=longest,list
@@ -131,23 +139,30 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " set list
 " set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace "
+" set lazyredraw
 
 syntax enable
 syntax on
 
 " Colorscheme
-set background=dark
+set background=light
 set t_Co=256 " 256 colors
 colorscheme jellybeans
 " colorscheme skittles
 if has('gui_running')
-  colorscheme skittles
+  " set background=light
+  " colorscheme skittles
+  colorscheme mac_classic_alt
 endif
 " colorscheme weih
 hi clear SpellBad
 hi clear SpellLocal
 hi clear SpellCap
 hi clear SpellRare
+
+hi TabLine      guifg=#333 guibg=#222 gui=none ctermfg=254 ctermbg=232 cterm=none
+hi TabLineSel   guifg=#666 guibg=#222 gui=bold ctermfg=231 ctermbg=235 cterm=bold
+" hi TabLineFill  guifg=#999 guibg=#222 gui=none ctermfg=254 ctermbg=238 cterm=none
 
 " Folding
 set foldmethod=syntax
@@ -157,8 +172,20 @@ hi Folded ctermfg=216 ctermbg=0
 
 au FileType javascript call JavaScriptFold()
 
+" CoffeeScript Fold by indent
+autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+autocmd BufNewFile,BufReadPost *.erb setl foldmethod=indent nofoldenable
+" autocmd BufNewFile,BufReadPost *.scss setl foldmethod=indent nofoldenable
+" autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
 " vim-textobj-rubyblock
 runtime macros/matchit.vim
+
+" Auto reload vimrc
+augroup myvimrchooks
+  au!
+  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc,mac_classic_alt.vim so $MYVIMRC | if has('gui_running') | so $MYVIMRC | endif
+augroup END
 
 " let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function;m:member'
 
@@ -199,13 +226,17 @@ map <leader>et :tabe %%
 nmap <leader>" ci"
 nmap <leader>' ci'
 imap <c-l> <space>=><space>
+imap <c-k> <%<space>%><Left><Left><Left>
 nnoremap Q <nop>
 " nnoremap <esc> :noh<return><esc>
 nmap <silent> <leader>d <Plug>DashSearch
 
-nmap <c-s> :w<CR>
+" nmap <c-s> :w<CR>
+nmap <c-s> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 imap <c-s> <Esc>:w<CR>a
 imap <c-s> <Esc><c-s>
+
+imap <D-<> tag<tab>
 
 " noremap <c-e> <END>
 " inoremap <c-e> <END>
@@ -223,6 +254,7 @@ nnoremap <leader>ak :Ack<space>
 " CtrlP
 nnoremap <leader>cm :CtrlPMRUFiles<cr>
 nnoremap <leader>cb :CtrlPBuffer<cr>
+nnoremap <c-b> :CtrlPBuffer<cr>
 
 " ctags stuff
 nnoremap <leader>ct :!ctags -R .<cr>
@@ -368,6 +400,7 @@ let g:Powerline_symbols = 'fancy'
         let g:UltiSnipsJumpForwardTrigger="<tab>"
         let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
         let g:UltiSnipsDontReverseSearchPath="1"
+
         "let g:UltiSnipsSnippetDirectories=["~/.vim/bundle/vim-snippets"]
     " }
 
@@ -517,4 +550,5 @@ if has("autocmd")
 	filetype on
 	" Treat .json files as .js
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+  autocmd VimEnter * UltiSnipsAddFiletypes erb.html
 endif

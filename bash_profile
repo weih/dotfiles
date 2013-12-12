@@ -7,6 +7,12 @@ export PATH="$HOME/bin:$PATH"
 # Add Postgres.app bin to PATH
 PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 
+# GOPATH
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+# Haskell Path
+export PATH=$PATH:"~/Library/Haskell/bin"
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -23,6 +29,11 @@ shopt -s histappend
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell
+
+# Todo.txt
+export TODOTXT_DEFAULT_ACTION=ls
+export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort -k 2,2 -k 1,1n'
+complete -F _todo t
 
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
@@ -60,3 +71,7 @@ which grunt &> /dev/null && eval "$(grunt --completion=bash)"
 . ~/.dotfiles/z/z.sh
 
 stty stop undef
+
+if [ -f $(brew --prefix)/etc/bash_completion  ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi

@@ -27,8 +27,10 @@
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
 	# Interactive rebase with the given number of latest commits
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
-  #co -> checkout
+  # co -> checkout
   co = checkout
+  # diff-highlight
+  diff-highlight = "!f() { git diff \"$@\" | ~/Projects/github_repo/git/contrib/diff-highlight/diff-highlight;  }; f"
 
 [apply]
 	# Detect whitespace errors when applying a patch
@@ -40,6 +42,7 @@
 	attributesfile = ~/.gitattributes
 	# Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
 	whitespace = space-before-tab,indent-with-non-tab,trailing-space
+	autocrlf = input
 
 [color]
 	# Use colors in Git commands that are capable of colored output when outputting to the terminal
