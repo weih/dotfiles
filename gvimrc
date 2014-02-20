@@ -18,6 +18,8 @@ highlight iCursor guifg='#333333' guibg='#888888'
 " set guicursor+=i:blinkwait10
 " color jellybeans
 
+set showtabline=0
+
 hi clear SpellBad
 hi clear SpellLocal
 hi clear SpellCap

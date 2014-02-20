@@ -41,7 +41,7 @@ Bundle 'jiangmiao/auto-pairs'
 "Bundle 'xolox/vim-session'
 "Bundle 'myusuf3/numbers.vim'
 "Bundle 'tpope/vim-obsession'
-"Bundle 'plasticboy/vim-markdown'
+" Bundle 'plasticboy/vim-markdown'
 " Bundle 'tpope/vim-markdown'
 "Bundle 'terryma/vim-multiple-cursors'
 " Bundle 'Valloric/YouCompleteMe'
@@ -56,7 +56,7 @@ Bundle 'vim-scripts/ZoomWin'
 "Bundle 'suan/vim-instant-markdown'
 "Bundle 'joeytwiddle/sexy_scroller.vim'
 "Bundle 't9md/vim-ruby-xmpfilter'
-"Bundle 'Rykka/colorv.vim'
+" Bundle 'Rykka/colorv.vim'
 "Bundle 'mattn/webapi-vim'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
@@ -86,6 +86,7 @@ Bundle 'kchmck/vim-coffee-script'
 " Bundle 'freitass/todo.txt-vim'
 " Bundle 'bilalq/lite-dfm'
 " Bundle 'szw/vim-ctrlspace'
+Bundle 'digitaltoad/vim-jade'
 
 filetype plugin indent on     " required!
 
@@ -151,8 +152,8 @@ colorscheme jellybeans
 " colorscheme skittles
 if has('gui_running')
   " set background=light
-  " colorscheme skittles
-  colorscheme mac_classic_alt
+  colorscheme cobalt
+  " colorscheme mac_classic_alt
 endif
 " colorscheme weih
 hi clear SpellBad
@@ -163,6 +164,8 @@ hi clear SpellRare
 hi TabLine      guifg=#333 guibg=#222 gui=none ctermfg=254 ctermbg=232 cterm=none
 hi TabLineSel   guifg=#666 guibg=#222 gui=bold ctermfg=231 ctermbg=235 cterm=bold
 " hi TabLineFill  guifg=#999 guibg=#222 gui=none ctermfg=254 ctermbg=238 cterm=none
+
+hi CursorLineNr term=bold ctermfg=14 gui=bold guifg=#c5060b
 
 " Folding
 set foldmethod=syntax
@@ -208,10 +211,12 @@ map <leader>y "*y
 nnoremap <leader><leader> <c-^>
 
 " Move around splits with <c-hjkl>
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
+" nnoremap <c-j> <c-w>j
+" nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-d>
+nnoremap <c-k> <c-u>
 
 nnoremap <cr> <kDivide>
 

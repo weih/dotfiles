@@ -30,6 +30,7 @@
   co = checkout
   ci = commit
   aa = add --all
+  dc = diff --color-words
   # diff-highlight
   diff-highlight = "!f() { git diff \"$@\" | ~/Projects/github_repo/git/contrib/diff-highlight/diff-highlight;  }; f"
 
@@ -39,7 +40,7 @@
 
 [core]
 	# Use custom `.gitignore` and `.gitattributes`
-	excludesfile = /opt/boxen/config/git/gitignore
+	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
 	# Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
 	whitespace = space-before-tab,indent-with-non-tab,trailing-space
@@ -57,6 +58,7 @@
 	frag = magenta bold
 	old = red bold
 	new = green bold
+  whitespace = black
 [color "status"]
 	added = yellow
 	changed = green
@@ -85,13 +87,15 @@
 	insteadOf = "gist:"
 
 [push]
-	default = matching
+	default = tracking
 
 [credential]
-helper = /opt/boxen/bin/boxen-git-credential
+  helper = /opt/boxen/bin/boxen-git-credential
 
 [hub]
-protocol = https
+  protocol = https
 
 [github]
-user = weih
+  user = weih
+[branch]
+	autosetuprebase = always

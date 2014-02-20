@@ -44,12 +44,15 @@ alias r='rake'
 
 alias dvtm="dvtm 2> log -M"
 alias tree2="tree -L 2"
+alias te="tree --du -h --dirsfirst"
 alias eda="$EDITOR ~/.dotfiles/aliases"
 alias edf="$EDITOR ~/.dotfiles/functions"
 alias edb="$EDITOR ~/.dotfiles/bash_profile"
 alias vrc="vim ~/.vimrc"
 alias mrc="mvim ~/.vimrc"
-alias makectags="ctags -R --exclude=.git --exclude=log * $(bundle list --paths)"
+# alias makectags="ctags -R --exclude=.git --exclude=log * $(bundle list --paths)"
+alias makectags="ctags -R --exclude=.git --exclude=log *" 
+alias reso="source ~/.bash_profile"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
