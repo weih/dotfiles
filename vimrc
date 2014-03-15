@@ -55,7 +55,7 @@ Bundle 'vim-scripts/ZoomWin'
 "Bundle 'Trevoke/ultisnips-rspec'
 "Bundle 'suan/vim-instant-markdown'
 "Bundle 'joeytwiddle/sexy_scroller.vim'
-"Bundle 't9md/vim-ruby-xmpfilter'
+" Bundle 't9md/vim-ruby-xmpfilter'
 " Bundle 'Rykka/colorv.vim'
 "Bundle 'mattn/webapi-vim'
 Bundle 'kana/vim-textobj-user'
@@ -87,6 +87,7 @@ Bundle 'kchmck/vim-coffee-script'
 " Bundle 'bilalq/lite-dfm'
 " Bundle 'szw/vim-ctrlspace'
 Bundle 'digitaltoad/vim-jade'
+Bundle 'hwartig/vim-seeing-is-believing'
 
 filetype plugin indent on     " required!
 
@@ -152,8 +153,8 @@ colorscheme jellybeans
 " colorscheme skittles
 if has('gui_running')
   " set background=light
-  colorscheme cobalt
-  " colorscheme mac_classic_alt
+  " colorscheme cobalt
+  colorscheme mac_classic_alt
 endif
 " colorscheme weih
 hi clear SpellBad
@@ -306,13 +307,31 @@ inoremap <s-tab> <c-n>
 " xmap <buffer> <F4> <Plug>(xmpfilter-mark)
 " imap <buffer> <F4> <Plug>(xmpfilter-mark)
 
+" Gvim
+nmap <buffer> <M-r> <Plug>(seeing-is-believing-run)
+xmap <buffer> <M-r> <Plug>(seeing-is-believing-run)
+imap <buffer> <M-r> <Plug>(seeing-is-believing-run)
+
+nmap <buffer> <M-m> <Plug>(seeing-is-believing-mark)
+xmap <buffer> <M-m> <Plug>(seeing-is-believing-mark)
+imap <buffer> <M-m> <Plug>(seeing-is-believing-mark)
+
+" Terminal
+nmap <buffer> <F2> <Plug>(seeing-is-believing-run)
+xmap <buffer> <F2> <Plug>(seeing-is-believing-run)
+imap <buffer> <F2> <Plug>(seeing-is-believing-run)
+
+nmap <buffer> <F1> <Plug>(seeing-is-believing-mark)
+xmap <buffer> <F1> <Plug>(seeing-is-believing-mark)
+imap <buffer> <f1> <plug>(seeing-is-believing-mark)
+
 " sudo
 cmap w!! w !sudo tee % >/dev/null
 
 let g:Powerline_symbols = 'fancy'
 
     " NerdTree {
-        map <F2> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+        " map <F2> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
         map <leader>e :NERDTreeFind<CR>
         nmap <leader>nt :NERDTreeFind<CR>
 
