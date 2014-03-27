@@ -53,6 +53,7 @@ alias mrc="mvim ~/.vimrc"
 # alias makectags="ctags -R --exclude=.git --exclude=log * $(bundle list --paths)"
 alias makectags="ctags -R --exclude=.git --exclude=log *" 
 alias reso="source ~/.bash_profile"
+alias rubyplay="mvim ~/Projects/ruby/ruby_playground.rb"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

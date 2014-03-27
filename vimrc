@@ -71,7 +71,7 @@ Bundle 'jelera/vim-javascript-syntax'
 " Bundle 'w0ng/vim-hybrid'
 " Bundle 'goatslacker/mango.vim'
 " Bundle 'vim-scripts/harlequin'
-" Bundle 'weih/vim-skittles-theme'
+Bundle 'weih/vim-skittles-theme'
 Bundle 'kchmck/vim-coffee-script'
 " Bundle 'othree/javascript-libraries-syntax.vim'
 "Bundle 'c9s/colorselector.vim'
@@ -88,6 +88,10 @@ Bundle 'kchmck/vim-coffee-script'
 " Bundle 'szw/vim-ctrlspace'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'hwartig/vim-seeing-is-believing'
+" Bundle 'szw/vim-dict'
+Bundle 'modsound/macdict-vim'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'itchyny/dictionary.vim'
 
 filetype plugin indent on     " required!
 
@@ -277,6 +281,9 @@ noremap <leader>t :w\|:!rake<cr>
 noremap <leader>r :w\|:!ruby %<cr>
 noremap <leader>j :w\|:!node %<cr>
 
+" Spell Check
+noremap z- 1z=
+
 :nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
 
 " Toggle for paste from other program
@@ -327,6 +334,9 @@ imap <buffer> <f1> <plug>(seeing-is-believing-mark)
 
 " sudo
 cmap w!! w !sudo tee % >/dev/null
+
+" Dictionary
+noremap <leader>d :MacDictCWord<cr>
 
 let g:Powerline_symbols = 'fancy'
 

@@ -33,6 +33,7 @@
   dc = diff --color-words
   # diff-highlight
   diff-highlight = "!f() { git diff \"$@\" | ~/Projects/github_repo/git/contrib/diff-highlight/diff-highlight;  }; f"
+  rank = shortlog -s -n -e
 
 [apply]
 	# Detect whitespace errors when applying a patch

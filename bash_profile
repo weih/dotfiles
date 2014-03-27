@@ -35,6 +35,9 @@ export TODOTXT_DEFAULT_ACTION=ls
 export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort -k 2,2 -k 1,1n'
 complete -F _todo t
 
+# Qwandry default editor
+export QWANDRY_EDITOR='mvim'
+
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
 # * Recursive globbing, e.g. `echo **/*.txt`
