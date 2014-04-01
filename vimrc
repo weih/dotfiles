@@ -24,7 +24,7 @@ Bundle 'scrooloose/nerdtree'
 "Bundle 'Townk/vim-autoclose'
 Bundle 'godlygeek/tabular'
 " Bundle 'junegunn/vim-easy-align'
-Bundle 'majutsushi/tagbar'
+" Bundle 'majutsushi/tagbar'
 " Bundle 'scrooloose/syntastic'
 " Bundle 'tpope/vim-unimpaired'
 "Bundle 'tpope/vim-repeat'
@@ -46,7 +46,7 @@ Bundle 'jiangmiao/auto-pairs'
 "Bundle 'terryma/vim-multiple-cursors'
 " Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'thoughtbot/vim-rspec'
+" Bundle 'thoughtbot/vim-rspec'
 " Bundle 'wincent/Command-T'
 " Bundle 'gregsexton/MatchTag'
 "Bundle 'tpope/vim-endwise'
@@ -60,10 +60,10 @@ Bundle 'vim-scripts/ZoomWin'
 "Bundle 'mattn/webapi-vim'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'tpope/vim-rails'
+" Bundle 'tpope/vim-rails'
 "Bundle 'Spaceghost/vim-matchit'
 "Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'elixir-lang/vim-elixir'
+" Bundle 'elixir-lang/vim-elixir'
 " Bundle 'rodjek/vim-puppet'
 Bundle 'roman/golden-ratio'
 " Bundle 'pangloss/vim-javascript'
@@ -71,7 +71,7 @@ Bundle 'jelera/vim-javascript-syntax'
 " Bundle 'w0ng/vim-hybrid'
 " Bundle 'goatslacker/mango.vim'
 " Bundle 'vim-scripts/harlequin'
-Bundle 'weih/vim-skittles-theme'
+" Bundle 'weih/vim-skittles-theme'
 Bundle 'kchmck/vim-coffee-script'
 " Bundle 'othree/javascript-libraries-syntax.vim'
 "Bundle 'c9s/colorselector.vim'
@@ -86,10 +86,10 @@ Bundle 'kchmck/vim-coffee-script'
 " Bundle 'freitass/todo.txt-vim'
 " Bundle 'bilalq/lite-dfm'
 " Bundle 'szw/vim-ctrlspace'
-Bundle 'digitaltoad/vim-jade'
+" Bundle 'digitaltoad/vim-jade'
 Bundle 'hwartig/vim-seeing-is-believing'
 " Bundle 'szw/vim-dict'
-Bundle 'modsound/macdict-vim'
+" Bundle 'modsound/macdict-vim'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'itchyny/dictionary.vim'
 
@@ -223,7 +223,7 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-d>
 nnoremap <c-k> <c-u>
 
-nnoremap <cr> <kDivide>
+" nnoremap <cr> <kDivide>
 
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
@@ -238,8 +238,8 @@ nmap <leader>' ci'
 imap <c-l> <space>=><space>
 imap <c-k> <%<space>%><Left><Left><Left>
 nnoremap Q <nop>
-" nnoremap <esc> :noh<return><esc>
-nmap <silent> <leader>d <Plug>DashSearch
+nnoremap <cr> :nohlsearch<cr>
+" nmap <silent> <leader>d <Plug>DashSearch
 
 " nmap <c-s> :w<CR>
 nmap <c-s> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
@@ -277,9 +277,15 @@ nmap <F8> :TagbarToggle<CR>
 " nmap <F5> :SyntasticCheck<CR>
 nmap <F12> :w<CR>:source %<CR>:BundleInstall<CR>
 " nmap <c-b> :w<CR>:!ruby %<CR>
-noremap <leader>t :w\|:!rake<cr>
-noremap <leader>r :w\|:!ruby %<cr>
+" noremap <leader>t :w\|:!rake<cr>
+" noremap <leader>r :w\|:!rake %<cr>
 noremap <leader>j :w\|:!node %<cr>
+
+" map <Leader>t :call RunCurrentSpecFile()<CR>
+" map <Leader>s :call RunNearestSpec()<CR>
+" map <Leader>l :call RunLastSpec()<CR>
+" map <Leader>a :call RunAllSpecs()<CR>
+" let g:rspec_runner = "os_x_iterm"
 
 " Spell Check
 noremap z- 1z=
@@ -336,9 +342,9 @@ imap <buffer> <f1> <plug>(seeing-is-believing-mark)
 cmap w!! w !sudo tee % >/dev/null
 
 " Dictionary
-noremap <leader>d :MacDictCWord<cr>
+noremap <leader>d :Dictionary -cursor-word<cr>
 
-let g:Powerline_symbols = 'fancy'
+" let g:Powerline_symbols = 'fancy'
 
     " NerdTree {
         " map <F2> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
@@ -453,118 +459,145 @@ endfunction
 map <leader>n :call RenameFile()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NeocompleteCache
+" SWITCH BETWEEN TEST AND PRODUCTION CODE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" " Disable AutoComplPop.
-" let g:acp_enableAtStartup = 0
-" " Use neocomplcache.
-" let g:neocomplcache_enable_at_startup = 1
-" " Use smartcase.
-" let g:neocomplcache_enable_smart_case = 1
-" " Set minimum syntax keyword length.
-" let g:neocomplcache_min_syntax_length = 3
-" let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-" 
-" " Enable heavy features.
-" " Use camel case completion.
-" "let g:neocomplcache_enable_camel_case_completion = 1
-" " Use underbar completion.
-" "let g:neocomplcache_enable_underbar_completion = 1
-" 
-" " Define dictionary.
-" let g:neocomplcache_dictionary_filetype_lists = {
-"     \ 'default' : '',
-"     \ 'vimshell' : $HOME.'/.vimshell_hist',
-"     \ 'scheme' : $HOME.'/.gosh_completions'
-"         \ }
-" 
-" " Define keyword.
-" if !exists('g:neocomplcache_keyword_patterns')
-"     let g:neocomplcache_keyword_patterns = {}
-" endif
-" let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-" 
-" " Plugin key-mappings.
-" inoremap <expr><C-g>     neocomplcache#undo_completion()
-" inoremap <expr><C-l>     neocomplcache#complete_common_string()
-" 
-" " Recommended key-mappings.
-" " <CR>: close popup and save indent.
-" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-" function! s:my_cr_function()
-"   return neocomplcache#smart_close_popup() . "\<CR>"
-"   " For no inserting <CR> key.
-"   "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-" endfunction
-" " <TAB>: completion.
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" " <C-h>, <BS>: close popup and delete backword char.
-" inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-" inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-" inoremap <expr><C-y>  neocomplcache#close_popup()
-" inoremap <expr><C-e>  neocomplcache#cancel_popup()
-" " Close popup by <Space>.
-" "inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
-" 
-" " For cursor moving in insert mode(Not recommended)
-" "inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
-" "inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
-" "inoremap <expr><Up>    neocomplcache#close_popup() . "\<Up>"
-" "inoremap <expr><Down>  neocomplcache#close_popup() . "\<Down>"
-" " Or set this.
-" "let g:neocomplcache_enable_cursor_hold_i = 1
-" " Or set this.
-" "let g:neocomplcache_enable_insert_char_pre = 1
-" 
-" " AutoComplPop like behavior.
-" "let g:neocomplcache_enable_auto_select = 1
-" 
-" " Shell like behavior(not recommended).
-" "set completeopt+=longest
-" "let g:neocomplcache_enable_auto_select = 1
-" "let g:neocomplcache_disable_auto_complete = 1
-" "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-" 
-" " Enable omni completion.
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" 
-" " Enable heavy omni completion.
-" if !exists('g:neocomplcache_omni_patterns')
-"   let g:neocomplcache_omni_patterns = {}
-" endif
-" let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-" let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-" let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-" 
-" "=====================
-" " Neocomplete Snippets
-" "=====================
-" " For perlomni.vim setting.
-" " https://github.com/c9s/perlomni.vim
-" let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-" 
-" " Plugin key-mappings.
-" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k>     <Plug>(neosnippet_expand_target)
-" 
-" " SuperTab like snippets behavior.
-" imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-" \ "\<Plug>(neosnippet_expand_or_jump)"
-" \: pumvisible() ? "\<C-n>" : "\<TAB>"
-" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-" \ "\<Plug>(neosnippet_expand_or_jump)"
-" \: "\<TAB>"
-" 
-" " For snippet_complete marker.
-" if has('conceal')
-"   set conceallevel=2 concealcursor=i
-" endif
+function! OpenTestAlternate()
+  let new_file = AlternateForCurrentFile()
+  exec ':e ' . new_file
+endfunction
+function! AlternateForCurrentFile()
+  let current_file = expand("%")
+  let new_file = current_file
+  let in_spec = match(current_file, '^spec/') != -1
+  let going_to_spec = !in_spec
+  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1
+  if going_to_spec
+    if in_app
+      let new_file = substitute(new_file, '^app/', '', '')
+    end
+    let new_file = substitute(new_file, '\.e\?rb$', '_spec.rb', '')
+    let new_file = 'spec/' . new_file
+  else
+    let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
+    let new_file = substitute(new_file, '^spec/', '', '')
+    if in_app
+      let new_file = 'app/' . new_file
+    end
+  endif
+  return new_file
+endfunction
+nnoremap <leader>. :call OpenTestAlternate()<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RUNNING TESTS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! MapCR()
+  nnoremap <cr> :call RunTestFile()<cr>
+endfunction
+call MapCR()
+nnoremap <leader>T :call RunNearestTest()<cr>
+nnoremap <leader>r :call RunTests('')<cr>
+nnoremap <leader>c :w\|:!script/features<cr>
+nnoremap <leader>w :w\|:!script/features --profile wip<cr>
+
+function! RunTestFile(...)
+    if a:0
+        let command_suffix = a:1
+    else
+        let command_suffix = ""
+    endif
+
+    " Run the tests for the previously-marked file.
+    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
+    if in_test_file
+        call SetTestFile()
+    elseif !exists("t:grb_test_file")
+        return
+    end
+    call RunTests(t:grb_test_file . command_suffix)
+endfunction
+
+function! RunNearestTest()
+    let spec_line_number = line('.')
+    call RunTestFile(":" . spec_line_number)
+endfunction
+
+function! SetTestFile()
+    " Set the spec file that tests will be run for.
+    let t:grb_test_file=@%
+endfunction
+
+function! RunTests(filename)
+    " Write the file and run tests for the given filename
+    if expand("%") != ""
+      :w
+    end
+    if match(a:filename, '\.feature$') != -1
+        exec ":!script/features " . a:filename
+    else
+        " First choice: project-specific test script
+        if filereadable("script/test")
+            exec ":!script/test " . a:filename
+        " Fall back to the .test-commands pipe if available, assuming someone
+        " is reading the other side and running the commands
+        elseif filewritable(".test-commands")
+          let cmd = 'rspec --color --format progress --require "~/lib/vim_rspec_formatter" --format VimFormatter --out tmp/quickfix'
+          exec ":!echo " . cmd . " " . a:filename . " > .test-commands"
+
+          " Write an empty string to block until the command completes
+          sleep 100m " milliseconds
+          :!echo > .test-commands
+          redraw!
+        " Fall back to a blocking test run with Bundler
+        elseif filereadable("Gemfile")
+            exec ":!bundle exec rspec --color " . a:filename
+        " Fall back to a normal blocking test run
+        else
+            exec ":!rspec --color " . a:filename
+        end
+    end
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Selecta Mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Run a given vim command on the results of fuzzy selecting from a given shell
+" command. See usage below.
+function! SelectaCommand(choice_command, selecta_args, vim_command)
+  try
+    silent let selection = system(a:choice_command . " | selecta " . a:selecta_args)
+  catch /Vim:Interrupt/
+    " Swallow the ^C so that the redraw below happens; otherwise there will be
+    " leftovers from selecta on the screen
+    redraw!
+    return
+  endtry
+  redraw!
+  exec a:vim_command . " " . selection
+endfunction
+
+function! SelectaFile(path)
+  call SelectaCommand("find " . a:path . "/* -type f", "", ":e")
+endfunction
+
+nnoremap <leader>f :call SelectaFile(".")<cr>
+nnoremap <leader>gv :call SelectaFile("app/views")<cr>
+nnoremap <leader>gc :call SelectaFile("app/controllers")<cr>
+nnoremap <leader>gm :call SelectaFile("app/models")<cr>
+nnoremap <leader>gh :call SelectaFile("app/helpers")<cr>
+nnoremap <leader>gl :call SelectaFile("lib")<cr>
+nnoremap <leader>gp :call SelectaFile("public")<cr>
+nnoremap <leader>gs :call SelectaFile("public/stylesheets")<cr>
+nnoremap <leader>gf :call SelectaFile("features")<cr>
+
+function! SelectaIdentifier()
+  " Yank the word under the cursor into the z register
+  normal "zyiw
+  " Fuzzy match files in the current directory, starting with the word under
+  " the cursor
+  call SelectaCommand("find * -type f", "-s " . @z, ":e")
+endfunction
+nnoremap <c-g> :call SelectaIdentifier()<cr>
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()

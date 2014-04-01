@@ -28,12 +28,13 @@
 	# Interactive rebase with the given number of latest commits
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
   co = checkout
-  ci = commit
+  ci = commit --verbose
   aa = add --all
   dc = diff --color-words
   # diff-highlight
   diff-highlight = "!f() { git diff \"$@\" | ~/Projects/github_repo/git/contrib/diff-highlight/diff-highlight;  }; f"
   rank = shortlog -s -n -e
+  change-what = diff-tree --no-commit-id --name-only -r
 
 [apply]
 	# Detect whitespace errors when applying a patch
