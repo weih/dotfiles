@@ -4,8 +4,6 @@ filetype off                   " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
-" required!
 Bundle 'gmarik/vundle'
 "Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/ctrlp.vim'
@@ -341,12 +339,6 @@ cmap w!! w !sudo tee % >/dev/null
 " Dictionary
 noremap <leader>d :Dictionary -cursor-word<cr>
 
-" let g:Powerline_symbols = 'fancy'
-
-    " NerdTree {
-        " map <F2> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-        " map <leader>e :NERDTreeFind<CR>
-        " nmap <leader>l :NERDTree<CR>
 
         let NERDTreeShowBookmarks=1
         let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
@@ -357,27 +349,14 @@ noremap <leader>d :Dictionary -cursor-word<cr>
         let NERDTreeKeepTreeInNewTab=1
         let g:nerdtree_tabs_open_on_gui_startup=0
         let NERDTreeWinSize=40
-    " }
 
-    " ctrlp {
         let g:ctrlp_working_path_mode = 'ra'
-        " let g:ctrlp_user_command = 'find %s -type f'       " MacOSX/Linux
         nnoremap <silent> <D-t> :CtrlP<CR>
         nnoremap <silent> <D-r> :CtrlPMRU<CR>
         let g:ctrlp_custom_ignore = {
             \ 'dir':  '\.git$\|\.hg$\|\.svn$',
             \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
-        " On Windows use "dir" as fallback command.
-        if has('win32') || has('win64')
-            let g:ctrlp_user_command = {
-                \ 'types': {
-                    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-                    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-                \ },
-                \ 'fallback': 'dir %s /-n /b /s /a-d'
-            \ }
-        else
             let g:ctrlp_user_command = {
                 \ 'types': {
                     \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
@@ -385,61 +364,23 @@ noremap <leader>d :Dictionary -cursor-word<cr>
                 \ },
                 \ 'fallback': 'find %s -type f'
             \ }
-        endif
-    "}
-    "
-    " indent_guides {
-        "if !exists('g:spf13_no_indent_guides_autocolor')
             let g:indent_guides_auto_colors = 1
-        "else
-            " For some colorschemes, autocolor will not work (eg: 'desert', 'ir_black')
-        "    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121 ctermbg=3
-        "    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
-        "endif
-        let g:indent_guides_start_level = 2
-        let g:indent_guides_guide_size = 1
-        let g:indent_guides_enable_on_vim_startup = 1
-    " }
-    " Tabularize {
-        " nmap <Leader>a& :Tabularize /&<CR>
-        " vmap <Leader>a& :Tabularize /&<CR>
-        " nmap <Leader>a= :Tabularize /=<CR>
-        " vmap <Leader>a= :Tabularize /=<CR>
-        " nmap <Leader>a: :Tabularize /:<CR>
-        " vmap <Leader>a: :Tabularize /:<CR>
-        " nmap <Leader>a:: :Tabularize /:\zs<CR>
-        " vmap <Leader>a:: :Tabularize /:\zs<CR>
-        " nmap <Leader>a, :Tabularize /,<CR>
-        " vmap <Leader>a, :Tabularize /,<CR>
-        " nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-        " vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-    " }
-    " ack.vim {
+            let g:indent_guides_start_level = 2
+            let g:indent_guides_guide_size = 1
+            let g:indent_guides_enable_on_vim_startup = 1
+
         let g:ackprg = 'ag --nogroup --nocolor --column'
-    " }
-    " indentLine {
+
         let g:indentLine_color_term = 239
-    " }
-    " vim-markdown {
+
         let g:vim_markdown_folding_disabled=1
-    " }
-    " Command-T {
-      " if has("gui_macvim")
-      "     macmenu &File.New\ Tab key=<nop>
-      "     map <D-t> :CommandT<CR>
-      " endif
-    " }
-    " YouCompleteMe {
-        let g:ycm_key_list_select_completion = ['<Down>']
-    " }
-    " UltiSnips {
-        let g:UltiSnipsExpandTrigger="<tab>"
-        let g:UltiSnipsJumpForwardTrigger="<tab>"
-        let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+    " UltiSnips
+        let g:UltiSnipsExpandTrigger="<c-e>"
+        let g:UltiSnipsJumpForwardTrigger="<c-e>"
+        " let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
         let g:UltiSnipsDontReverseSearchPath="1"
 
         "let g:UltiSnipsSnippetDirectories=["~/.vim/bundle/vim-snippets"]
-    " }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RENAME CURRENT FILE
@@ -554,7 +495,6 @@ function! RunTests(filename)
         " end
     end
 endfunction
-
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
