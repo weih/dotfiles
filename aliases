@@ -24,6 +24,7 @@ alias d='dirs -v | head -10'
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/Projects"
+alias git="hub"
 alias g="git"
 alias h="history"
 alias j="jobs"

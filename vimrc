@@ -36,7 +36,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-fugitive'
 "Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
 Bundle 'ap/vim-css-color'
-Bundle 'jiangmiao/auto-pairs'
+" Bundle 'jiangmiao/auto-pairs'
 "Bundle 'xolox/vim-misc'
 "Bundle 'xolox/vim-session'
 "Bundle 'myusuf3/numbers.vim'
@@ -90,8 +90,8 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'hwartig/vim-seeing-is-believing'
 " Bundle 'szw/vim-dict'
 " Bundle 'modsound/macdict-vim'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'itchyny/dictionary.vim'
+" Bundle 'Shougo/vimproc.vim'
+" Bundle 'itchyny/dictionary.vim'
 
 filetype plugin indent on     " required!
 
@@ -143,8 +143,8 @@ set t_ti= t_te=
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-" set list
-" set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace "
+set list
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace "
 " set lazyredraw
 
 syntax enable
@@ -159,6 +159,7 @@ if has('gui_running')
   " set background=light
   " colorscheme cobalt
   colorscheme mac_classic_alt
+  " colorscheme jellybeans
 endif
 " colorscheme weih
 hi clear SpellBad
@@ -536,25 +537,25 @@ function! RunTests(filename)
         exec ":!script/features " . a:filename
     else
         " First choice: project-specific test script
-        if filereadable("script/test")
-            exec ":!script/test " . a:filename
-        " Fall back to the .test-commands pipe if available, assuming someone
-        " is reading the other side and running the commands
-        elseif filewritable(".test-commands")
-          let cmd = 'rspec --color --format progress --require "~/lib/vim_rspec_formatter" --format VimFormatter --out tmp/quickfix'
-          exec ":!echo " . cmd . " " . a:filename . " > .test-commands"
-
-          " Write an empty string to block until the command completes
-          sleep 100m " milliseconds
-          :!echo > .test-commands
-          redraw!
-        " Fall back to a blocking test run with Bundler
-        elseif filereadable("Gemfile")
-            exec ":!bundle exec rspec --color " . a:filename
-        " Fall back to a normal blocking test run
-        else
+        " if filereadable("script/test")
+        "     exec ":!script/test " . a:filename
+        " " Fall back to the .test-commands pipe if available, assuming someone
+        " " is reading the other side and running the commands
+        " elseif filewritable(".test-commands")
+        "   let cmd = 'rspec --color --format progress --require "~/lib/vim_rspec_formatter" --format VimFormatter --out tmp/quickfix'
+        "   exec ":!echo " . cmd . " " . a:filename . " > .test-commands"
+        "
+        "   " Write an empty string to block until the command completes
+        "   sleep 100m " milliseconds
+        "   :!echo > .test-commands
+        "   redraw!
+        " " Fall back to a blocking test run with Bundler
+        " elseif filereadable("Gemfile")
+        "     exec ":!bundle exec rspec --color " . a:filename
+        " " Fall back to a normal blocking test run
+        " else
             exec ":!rspec --color " . a:filename
-        end
+        " end
     end
 endfunction
 
