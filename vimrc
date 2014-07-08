@@ -22,7 +22,7 @@ Bundle 'scrooloose/nerdtree'
 "Bundle 'Shougo/neosnippet'
 "Bundle 'honza/vim-snippets'
 "Bundle 'Townk/vim-autoclose'
-Bundle 'godlygeek/tabular'
+" Bundle 'godlygeek/tabular'
 " Bundle 'junegunn/vim-easy-align'
 " Bundle 'majutsushi/tagbar'
 " Bundle 'scrooloose/syntastic'
@@ -35,7 +35,7 @@ Bundle 'mileszs/ack.vim'
 " Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-fugitive'
 "Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
-Bundle 'ap/vim-css-color'
+" Bundle 'ap/vim-css-color'
 " Bundle 'jiangmiao/auto-pairs'
 "Bundle 'xolox/vim-misc'
 "Bundle 'xolox/vim-session'
@@ -153,13 +153,16 @@ syntax on
 " Colorscheme
 set background=light
 set t_Co=256 " 256 colors
-colorscheme jellybeans
+" colorscheme jellybeans
+colorscheme Tomorrow-Night
 " colorscheme skittles
 if has('gui_running')
   " set background=light
   " colorscheme cobalt
-  colorscheme mac_classic_alt
+  " colorscheme mac_classic_alt
   " colorscheme jellybeans
+  " colorscheme Tomorrow-Night
+  colorscheme Tomorrow
 endif
 " colorscheme weih
 hi clear SpellBad
@@ -239,11 +242,12 @@ nmap <leader>' ci'
 imap <c-l> <space>=><space>
 imap <c-k> <%<space>%><Left><Left><Left>
 nnoremap Q <nop>
-nnoremap <cr> :nohlsearch<cr>
+nnoremap <space> :nohlsearch<cr><kDivide>
 " nmap <silent> <leader>d <Plug>DashSearch
 
 " nmap <c-s> :w<CR>
 nmap <c-s> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+nmap <leader>l :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 imap <c-s> <Esc>:w<CR>a
 imap <c-s> <Esc><c-s>
 
@@ -313,22 +317,14 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
-" nmap <buffer> <F5> <Plug>(xmpfilter-run)
-" xmap <buffer> <F5> <Plug>(xmpfilter-run)
-" imap <buffer> <F5> <Plug>(xmpfilter-run)
-" 
-" nmap <buffer> <F4> <Plug>(xmpfilter-mark)
-" xmap <buffer> <F4> <Plug>(xmpfilter-mark)
-" imap <buffer> <F4> <Plug>(xmpfilter-mark)
-
 " Gvim
-nmap <buffer> <M-r> <Plug>(seeing-is-believing-run)
-xmap <buffer> <M-r> <Plug>(seeing-is-believing-run)
-imap <buffer> <M-r> <Plug>(seeing-is-believing-run)
-
-nmap <buffer> <M-m> <Plug>(seeing-is-believing-mark)
-xmap <buffer> <M-m> <Plug>(seeing-is-believing-mark)
-imap <buffer> <M-m> <Plug>(seeing-is-believing-mark)
+" nmap <buffer> <M-r> <Plug>(seeing-is-believing-run)
+" xmap <buffer> <M-r> <Plug>(seeing-is-believing-run)
+" imap <buffer> <M-r> <Plug>(seeing-is-believing-run)
+"
+" nmap <buffer> <M-m> <Plug>(seeing-is-believing-mark)
+" xmap <buffer> <M-m> <Plug>(seeing-is-believing-mark)
+" imap <buffer> <M-m> <Plug>(seeing-is-believing-mark)
 
 " Terminal
 nmap <buffer> <F2> <Plug>(seeing-is-believing-run)
@@ -349,8 +345,8 @@ noremap <leader>d :Dictionary -cursor-word<cr>
 
     " NerdTree {
         " map <F2> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-        map <leader>e :NERDTreeFind<CR>
-        nmap <leader>nt :NERDTreeFind<CR>
+        " map <leader>e :NERDTreeFind<CR>
+        " nmap <leader>l :NERDTree<CR>
 
         let NERDTreeShowBookmarks=1
         let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
@@ -405,18 +401,18 @@ noremap <leader>d :Dictionary -cursor-word<cr>
         let g:indent_guides_enable_on_vim_startup = 1
     " }
     " Tabularize {
-        nmap <Leader>a& :Tabularize /&<CR>
-        vmap <Leader>a& :Tabularize /&<CR>
-        nmap <Leader>a= :Tabularize /=<CR>
-        vmap <Leader>a= :Tabularize /=<CR>
-        nmap <Leader>a: :Tabularize /:<CR>
-        vmap <Leader>a: :Tabularize /:<CR>
-        nmap <Leader>a:: :Tabularize /:\zs<CR>
-        vmap <Leader>a:: :Tabularize /:\zs<CR>
-        nmap <Leader>a, :Tabularize /,<CR>
-        vmap <Leader>a, :Tabularize /,<CR>
-        nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-        vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+        " nmap <Leader>a& :Tabularize /&<CR>
+        " vmap <Leader>a& :Tabularize /&<CR>
+        " nmap <Leader>a= :Tabularize /=<CR>
+        " vmap <Leader>a= :Tabularize /=<CR>
+        " nmap <Leader>a: :Tabularize /:<CR>
+        " vmap <Leader>a: :Tabularize /:<CR>
+        " nmap <Leader>a:: :Tabularize /:\zs<CR>
+        " vmap <Leader>a:: :Tabularize /:\zs<CR>
+        " nmap <Leader>a, :Tabularize /,<CR>
+        " vmap <Leader>a, :Tabularize /,<CR>
+        " nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+        " vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
     " }
     " ack.vim {
         let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -459,35 +455,35 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SWITCH BETWEEN TEST AND PRODUCTION CODE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! OpenTestAlternate()
-  let new_file = AlternateForCurrentFile()
-  exec ':e ' . new_file
-endfunction
-function! AlternateForCurrentFile()
-  let current_file = expand("%")
-  let new_file = current_file
-  let in_spec = match(current_file, '^spec/') != -1
-  let going_to_spec = !in_spec
-  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1
-  if going_to_spec
-    if in_app
-      let new_file = substitute(new_file, '^app/', '', '')
-    end
-    let new_file = substitute(new_file, '\.e\?rb$', '_spec.rb', '')
-    let new_file = 'spec/' . new_file
-  else
-    let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
-    let new_file = substitute(new_file, '^spec/', '', '')
-    if in_app
-      let new_file = 'app/' . new_file
-    end
-  endif
-  return new_file
-endfunction
-nnoremap <leader>. :call OpenTestAlternate()<cr>
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " SWITCH BETWEEN TEST AND PRODUCTION CODE
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" function! OpenTestAlternate()
+"   let new_file = AlternateForCurrentFile()
+"   exec ':e ' . new_file
+" endfunction
+" function! AlternateForCurrentFile()
+"   let current_file = expand("%")
+"   let new_file = current_file
+"   let in_spec = match(current_file, '^spec/') != -1
+"   let going_to_spec = !in_spec
+"   let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1
+"   if going_to_spec
+"     if in_app
+"       let new_file = substitute(new_file, '^app/', '', '')
+"     end
+"     let new_file = substitute(new_file, '\.e\?rb$', '_spec.rb', '')
+"     let new_file = 'spec/' . new_file
+"   else
+"     let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
+"     let new_file = substitute(new_file, '^spec/', '', '')
+"     if in_app
+"       let new_file = 'app/' . new_file
+"     end
+"   endif
+"   return new_file
+" endfunction
+" nnoremap <leader>. :call OpenTestAlternate()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RUNNING TESTS
@@ -559,46 +555,6 @@ function! RunTests(filename)
     end
 endfunction
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Selecta Mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Run a given vim command on the results of fuzzy selecting from a given shell
-" command. See usage below.
-function! SelectaCommand(choice_command, selecta_args, vim_command)
-  try
-    silent let selection = system(a:choice_command . " | selecta " . a:selecta_args)
-  catch /Vim:Interrupt/
-    " Swallow the ^C so that the redraw below happens; otherwise there will be
-    " leftovers from selecta on the screen
-    redraw!
-    return
-  endtry
-  redraw!
-  exec a:vim_command . " " . selection
-endfunction
-
-function! SelectaFile(path)
-  call SelectaCommand("find " . a:path . "/* -type f", "", ":e")
-endfunction
-
-nnoremap <leader>f :call SelectaFile(".")<cr>
-nnoremap <leader>gv :call SelectaFile("app/views")<cr>
-nnoremap <leader>gc :call SelectaFile("app/controllers")<cr>
-nnoremap <leader>gm :call SelectaFile("app/models")<cr>
-nnoremap <leader>gh :call SelectaFile("app/helpers")<cr>
-nnoremap <leader>gl :call SelectaFile("lib")<cr>
-nnoremap <leader>gp :call SelectaFile("public")<cr>
-nnoremap <leader>gs :call SelectaFile("public/stylesheets")<cr>
-nnoremap <leader>gf :call SelectaFile("features")<cr>
-
-function! SelectaIdentifier()
-  " Yank the word under the cursor into the z register
-  normal "zyiw
-  " Fuzzy match files in the current directory, starting with the word under
-  " the cursor
-  call SelectaCommand("find * -type f", "-s " . @z, ":e")
-endfunction
-nnoremap <c-g> :call SelectaIdentifier()<cr>
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
