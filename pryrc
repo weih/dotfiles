@@ -47,6 +47,10 @@ begin
 rescue LoadError
 end
 
+Pry::Commands.block_command('enable-pry', 'Enable `binding.pry` feature') do
+    ENV['DISABLE_PRY'] = nil
+end
+
 begin
   require "active_support"
 rescue LoadError

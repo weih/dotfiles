@@ -30,11 +30,14 @@
   co = checkout
   ci = commit --verbose
   aa = add --all
-  dc = diff --color-words
+  dw = diff --color-words
+  dc = diff --cached
   # diff-highlight
   diff-highlight = "!f() { git diff \"$@\" | ~/Projects/github_repo/git/contrib/diff-highlight/diff-highlight;  }; f"
   rank = shortlog -s -n -e
   change-what = diff-tree --no-commit-id --name-only -r
+  cherry-pick-thiers = cherry-pick --strategy=recursive -X theirs
+  conflit-files = diff --name-only --diff-filter=U
 
 [apply]
 	# Detect whitespace errors when applying a patch
@@ -45,7 +48,8 @@
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
 	# Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
-	whitespace = space-before-tab,indent-with-non-tab,trailing-space
+	# whitespace = space-before-tab,indent-with-non-tab,trailing-space
+	whitespace = trailing-space
 	autocrlf = input
 
 [color]

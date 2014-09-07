@@ -5,14 +5,29 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-"Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/ctrlp.vim'
-"Bundle 'scrooloose/nerdcommenter'
 Bundle 'tomtom/tcomment_vim'
-"Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tpope/vim-surround'
-" Bundle 'flazz/vim-colorschemes'
+Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'hwartig/vim-seeing-is-believing'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'SirVer/ultisnips'
+Bundle 'vim-scripts/ZoomWin'
+Bundle 'tpope/vim-fugitive'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'greyblake/vim-preview'
+Bundle 'roman/golden-ratio'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'cakebaker/scss-syntax.vim'
+" Bundle 'wavded/vim-stylus'
+" Bundle 'tpope/vim-surround'
+"Bundle 'altercation/vim-colors-solarized'
+"Bundle 'scrooloose/nerdcommenter'
+"Bundle 'Lokaltog/vim-easymotion'
+" Bundle 'flazz/vim-colorschemes'
 "Bundle 'jistr/vim-nerdtree-tabs'
 "Bundle 'ervandew/supertab'
 "Bundle 'msanders/snipmate.vim'
@@ -26,15 +41,12 @@ Bundle 'scrooloose/nerdtree'
 " Bundle 'scrooloose/syntastic'
 " Bundle 'tpope/vim-unimpaired'
 "Bundle 'tpope/vim-repeat'
-Bundle 'mileszs/ack.vim'
 "Bundle 'nathanaelkane/vim-indent-guides'
 "Bundle 'Yggdroot/indentLine'
 "Bundle 'airblade/vim-gitgutter'
 " Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-fugitive'
 "Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
 " Bundle 'ap/vim-css-color'
-" Bundle 'jiangmiao/auto-pairs'
 "Bundle 'xolox/vim-misc'
 "Bundle 'xolox/vim-session'
 "Bundle 'myusuf3/numbers.vim'
@@ -43,34 +55,26 @@ Bundle 'tpope/vim-fugitive'
 " Bundle 'tpope/vim-markdown'
 "Bundle 'terryma/vim-multiple-cursors'
 " Bundle 'Valloric/YouCompleteMe'
-Bundle 'vim-ruby/vim-ruby'
 " Bundle 'thoughtbot/vim-rspec'
 " Bundle 'wincent/Command-T'
 " Bundle 'gregsexton/MatchTag'
 "Bundle 'tpope/vim-endwise'
-Bundle 'SirVer/ultisnips'
-Bundle 'vim-scripts/ZoomWin'
 "Bundle 'Trevoke/ultisnips-rspec'
 "Bundle 'suan/vim-instant-markdown'
 "Bundle 'joeytwiddle/sexy_scroller.vim'
 " Bundle 't9md/vim-ruby-xmpfilter'
 " Bundle 'Rykka/colorv.vim'
 "Bundle 'mattn/webapi-vim'
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
 " Bundle 'tpope/vim-rails'
 "Bundle 'Spaceghost/vim-matchit'
 "Bundle 'ecomba/vim-ruby-refactoring'
 " Bundle 'elixir-lang/vim-elixir'
 " Bundle 'rodjek/vim-puppet'
-Bundle 'roman/golden-ratio'
 " Bundle 'pangloss/vim-javascript'
-Bundle 'jelera/vim-javascript-syntax'
 " Bundle 'w0ng/vim-hybrid'
 " Bundle 'goatslacker/mango.vim'
 " Bundle 'vim-scripts/harlequin'
 " Bundle 'weih/vim-skittles-theme'
-Bundle 'kchmck/vim-coffee-script'
 " Bundle 'othree/javascript-libraries-syntax.vim'
 "Bundle 'c9s/colorselector.vim'
 " Bundle 'rizzatti/funcoo.vim'
@@ -85,13 +89,12 @@ Bundle 'kchmck/vim-coffee-script'
 " Bundle 'bilalq/lite-dfm'
 " Bundle 'szw/vim-ctrlspace'
 " Bundle 'digitaltoad/vim-jade'
-Bundle 'hwartig/vim-seeing-is-believing'
 " Bundle 'szw/vim-dict'
-" Bundle 'modsound/macdict-vim'
+Bundle 'modsound/macdict-vim'
 " Bundle 'Shougo/vimproc.vim'
 " Bundle 'itchyny/dictionary.vim'
 
-filetype plugin indent on     " required!
+filetype plugin indent on
 
 " General
 set number
@@ -144,6 +147,8 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace "
 " set lazyredraw
+set clipboard=unnamed
+set relativenumber
 
 syntax enable
 syntax on
@@ -159,8 +164,8 @@ if has('gui_running')
   " colorscheme cobalt
   " colorscheme mac_classic_alt
   " colorscheme jellybeans
-  " colorscheme Tomorrow-Night
-  colorscheme Tomorrow
+  colorscheme Tomorrow-Night
+  " colorscheme Tomorrow
 endif
 " colorscheme weih
 hi clear SpellBad
@@ -174,11 +179,15 @@ hi TabLineSel   guifg=#666 guibg=#222 gui=bold ctermfg=231 ctermbg=235 cterm=bol
 
 hi CursorLineNr term=bold ctermfg=14 gui=bold guifg=#c5060b
 
+" Git Diff
+hi diffAdded ctermfg=Green
+hi diffRemoved ctermfg=Red
+
 " Folding
 set foldmethod=syntax
 set foldnestmax=6
 set nofoldenable
-hi Folded ctermfg=216 ctermbg=0
+hi Folded guifg=#986DB2 ctermfg=104
 
 au FileType javascript call JavaScriptFold()
 
@@ -237,19 +246,21 @@ map <leader>et :tabe %%
 
 nmap <leader>" ci"
 nmap <leader>' ci'
-imap <c-l> <space>=><space>
-imap <c-k> <%<space>%><Left><Left><Left>
+" imap <c-l> <space>=><space>
+imap <c-l> binding.pry
 nnoremap Q <nop>
 nnoremap <space> :nohlsearch<cr><kDivide>
 " nmap <silent> <leader>d <Plug>DashSearch
 
-" nmap <c-s> :w<CR>
-nmap <c-s> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+nmap <c-s> :w<CR>
+" nmap <c-s> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 nmap <leader>l :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 imap <c-s> <Esc>:w<CR>a
 imap <c-s> <Esc><c-s>
 
-imap <D-<> tag<tab>
+imap <D->> <%<space>%><Left><Left><Left>
+imap <c-k> <%<space>%><Left><Left><Left>
+imap <D-<> tagi<c-e>
 
 " noremap <c-e> <END>
 " inoremap <c-e> <END>
@@ -269,8 +280,11 @@ nnoremap <leader>cm :CtrlPMRUFiles<cr>
 nnoremap <leader>cb :CtrlPBuffer<cr>
 nnoremap <c-b> :CtrlPBuffer<cr>
 
-" ctags stuff
+" Ctags stuff
 nnoremap <leader>ct :!ctags -R .<cr>
+
+" Ctags select
+nnoremap <leader>ts :ts <c-r><c-w><cr>
 
 " golden ratio
 nnoremap <leader>gr :GoldenRatioResize<cr>
@@ -337,7 +351,7 @@ imap <buffer> <f1> <plug>(seeing-is-believing-mark)
 cmap w!! w !sudo tee % >/dev/null
 
 " Dictionary
-noremap <leader>d :Dictionary -cursor-word<cr>
+noremap <leader>d :MacDict <c-r><c-w><cr>
 
 
         let NERDTreeShowBookmarks=1
@@ -396,36 +410,6 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " SWITCH BETWEEN TEST AND PRODUCTION CODE
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" function! OpenTestAlternate()
-"   let new_file = AlternateForCurrentFile()
-"   exec ':e ' . new_file
-" endfunction
-" function! AlternateForCurrentFile()
-"   let current_file = expand("%")
-"   let new_file = current_file
-"   let in_spec = match(current_file, '^spec/') != -1
-"   let going_to_spec = !in_spec
-"   let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1
-"   if going_to_spec
-"     if in_app
-"       let new_file = substitute(new_file, '^app/', '', '')
-"     end
-"     let new_file = substitute(new_file, '\.e\?rb$', '_spec.rb', '')
-"     let new_file = 'spec/' . new_file
-"   else
-"     let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
-"     let new_file = substitute(new_file, '^spec/', '', '')
-"     if in_app
-"       let new_file = 'app/' . new_file
-"     end
-"   endif
-"   return new_file
-" endfunction
-" nnoremap <leader>. :call OpenTestAlternate()<cr>
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RUNNING TESTS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -434,9 +418,18 @@ function! MapCR()
 endfunction
 call MapCR()
 nnoremap <leader>T :call RunNearestTest()<cr>
-nnoremap <leader>r :call RunTests('')<cr>
+" nnoremap <leader>r :call RunTests('')<cr>
+
+" nnoremap <leader>r :w\|:exec "!ruby -Itest <C-R>=expand("%:p")<cr> -l" line('.')<cr>
+nnoremap <leader>r :w\|:exec "!zeus rspec <C-R>=expand("%:p")<cr>:".line('.')<cr>
+
 nnoremap <leader>c :w\|:!script/features<cr>
 nnoremap <leader>w :w\|:!script/features --profile wip<cr>
+
+function! RunCurrentLine()
+  let line_number = line('.')
+  call RunCurrentLine(line_number)
+endfunction
 
 function! RunTestFile(...)
     if a:0
@@ -446,7 +439,7 @@ function! RunTestFile(...)
     endif
 
     " Run the tests for the previously-marked file.
-    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
+    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
     if in_test_file
         call SetTestFile()
     elseif !exists("t:grb_test_file")
@@ -491,7 +484,9 @@ function! RunTests(filename)
         "     exec ":!bundle exec rspec --color " . a:filename
         " " Fall back to a normal blocking test run
         " else
-            exec ":!rspec --color " . a:filename
+            " exec ":!zeus rspec --color " . a:filename
+            " exec ":!clear"
+            exec ":!ruby -Ilib:test " . a:filename
         " end
     end
 endfunction
@@ -505,6 +500,7 @@ function! StripWhitespace()
 	call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
+
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
@@ -514,5 +510,5 @@ if has("autocmd")
 	filetype on
 	" Treat .json files as .js
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-  autocmd VimEnter * UltiSnipsAddFiletypes erb.html
+  autocmd BufNewFile,BufRead * UltiSnipsAddFiletypes erb.html
 endif
