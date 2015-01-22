@@ -1,5 +1,6 @@
 " set guifont=MonacoB\ Bold:h14
-set guifont=MonacoB:h14
+" set guifont=MonacoB:h12
+set guifont=MonacoB:h12
 " set guifont=Monaco\ for\ Powerline:h14
 set guioptions-=rL
 

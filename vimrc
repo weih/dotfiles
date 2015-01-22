@@ -22,6 +22,12 @@ Bundle 'greyblake/vim-preview'
 Bundle 'roman/golden-ratio'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'tpope/vim-fireplace'
+Bundle 'guns/vim-clojure-static'
+Bundle 'wting/rust.vim'
+" Bundle 'kovisoft/paredit'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'ktvoelker/sbt-vim'
 " Bundle 'wavded/vim-stylus'
 " Bundle 'tpope/vim-surround'
 "Bundle 'altercation/vim-colors-solarized'
@@ -107,12 +113,26 @@ set softtabstop=2
 set shiftwidth=2
 set laststatus=2
 " Broken down into easily includeable segments
-set statusline=%<%f\                     " Filename
-set statusline+=%w%h%m%r                 " Options
-set statusline+=%{fugitive#statusline()} " Git Hotness
-set statusline+=\ [%{&ff}/%Y]            " Filetype
-set statusline+=\ [%{getcwd()}]          " Current dir
-set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+function! DerekFugitiveStatusLine()
+  let status = fugitive#statusline()
+  let trimmed = substitute(status, '\[Git(\(.*\))\]', '\1', '')
+  let trimmed = substitute(trimmed, '\(\w\)\w\+\ze/', '\1', '')
+  let trimmed = substitute(trimmed, '/[^_]*\zs_.*', '', '')
+  if len(trimmed) == 0
+    return ""
+  else
+    return '(' . trimmed[0:10] . ')'
+  endif
+endfunction
+
+" Set the status line the way i like it
+set stl=%f\ %m\ %r%{DerekFugitiveStatusLine()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
+" set statusline=%<%f\                     " Filename
+" set statusline+=%w%h%m%r                 " Options
+" set statusline+=%{fugitive#statusline()} " Git Hotness
+" set statusline+=\ [%{&ff}/%Y]            " Filetype
+" set statusline+=\ [%{getcwd()}]          " Current dir
+" set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 set expandtab
 set showtabline=2
 set hlsearch
@@ -154,18 +174,21 @@ syntax enable
 syntax on
 
 " Colorscheme
-set background=light
+set background=dark
 set t_Co=256 " 256 colors
 " colorscheme jellybeans
 colorscheme Tomorrow-Night
-" colorscheme skittles
+  " colorscheme railscasts
+  " colorscheme monokai
 if has('gui_running')
   " set background=light
   " colorscheme cobalt
   " colorscheme mac_classic_alt
   " colorscheme jellybeans
   colorscheme Tomorrow-Night
-  " colorscheme Tomorrow
+  " colorscheme twilight
+  " colorscheme railscasts
+  " colorscheme skittles
 endif
 " colorscheme weih
 hi clear SpellBad
@@ -203,7 +226,7 @@ runtime macros/matchit.vim
 " Auto reload vimrc
 augroup myvimrchooks
   au!
-  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc,mac_classic_alt.vim so $MYVIMRC | if has('gui_running') | so $MYVIMRC | endif
+  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc,mac_classic_alt.vim so $MYVIMRC | if has('gui_running') | so $MYVIMRC | so $MYGVIMRC | endif
 augroup END
 
 " let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function;m:member'
@@ -314,6 +337,11 @@ nnoremap <F3> :set invpaste paste?<CR>
 imap <F3> <C-O>:set invpaste paste?<CR>
 set pastetoggle=<F3>
 
+
+"Scala
+nmap <leader>; :w<CR>:!scala %<CR>
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
 " Indent if we're at the beginning of a line. Else, do completion.
@@ -420,8 +448,6 @@ call MapCR()
 nnoremap <leader>T :call RunNearestTest()<cr>
 " nnoremap <leader>r :call RunTests('')<cr>
 
-" nnoremap <leader>r :w\|:exec "!ruby -Itest <C-R>=expand("%:p")<cr> -l" line('.')<cr>
-nnoremap <leader>r :w\|:exec "!zeus rspec <C-R>=expand("%:p")<cr>:".line('.')<cr>
 
 nnoremap <leader>c :w\|:!script/features<cr>
 nnoremap <leader>w :w\|:!script/features --profile wip<cr>
@@ -484,12 +510,16 @@ function! RunTests(filename)
         "     exec ":!bundle exec rspec --color " . a:filename
         " " Fall back to a normal blocking test run
         " else
-            " exec ":!zeus rspec --color " . a:filename
+            exec ":!bin/rspec --color " . a:filename
+            " exec ":!zeus rspec --no-color " . a:filename
             " exec ":!clear"
-            exec ":!ruby -Ilib:test " . a:filename
+            " exec ":!ruby -Ilib:test " . a:filename
         " end
     end
 endfunction
+" nnoremap <leader>r :w\|:exec "!ruby -Itest <C-R>=expand("%:p")<cr> -l" line('.')<cr>
+nnoremap <leader>r :w\|:exec "!./bin/rspec <C-R>=expand("%:p")<cr>:".line('.')<cr>
+" nnoremap <leader>r :w\|:exec "!zeus rspec --no-color <C-R>=expand("%:p")<cr>:".line('.')<cr>
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
