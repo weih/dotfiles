@@ -8,6 +8,19 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set laststatus=2
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set autoindent
+set smartindent
+set noshowmode
+set showcmd
+set title
+set cursorline
+
+syntax on
+colorscheme delek
 
 let mapleader=","
 imap jk <Esc>
@@ -28,3 +41,5 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-d>
 nnoremap <c-k> <c-u>
+
+hi CursorLine   cterm=NONE ctermbg=black ctermfg=white guibg=darkred guifg=white
