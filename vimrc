@@ -9,25 +9,25 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'hwartig/vim-seeing-is-believing'
+" Bundle 'hwartig/vim-seeing-is-believing'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'SirVer/ultisnips'
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'tpope/vim-fugitive'
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'greyblake/vim-preview'
+" Bundle 'kana/vim-textobj-user'
+" Bundle 'nelstrom/vim-textobj-rubyblock'
+" Bundle 'greyblake/vim-preview'
 Bundle 'roman/golden-ratio'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'tpope/vim-fireplace'
-Bundle 'guns/vim-clojure-static'
-Bundle 'wting/rust.vim'
+" Bundle 'tpope/vim-fireplace'
+" Bundle 'guns/vim-clojure-static'
+" Bundle 'wting/rust.vim'
 " Bundle 'kovisoft/paredit'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'ktvoelker/sbt-vim'
+" Bundle 'derekwyatt/vim-scala'
+" Bundle 'ktvoelker/sbt-vim'
 " Bundle 'wavded/vim-stylus'
 " Bundle 'tpope/vim-surround'
 "Bundle 'altercation/vim-colors-solarized'
@@ -183,9 +183,9 @@ colorscheme Tomorrow-Night
 if has('gui_running')
   " set background=light
   " colorscheme cobalt
-  " colorscheme mac_classic_alt
+  colorscheme mac_classic_alt
   " colorscheme jellybeans
-  colorscheme Tomorrow-Night
+  " colorscheme Tomorrow-Night
   " colorscheme twilight
   " colorscheme railscasts
   " colorscheme skittles
@@ -221,13 +221,13 @@ autocmd BufNewFile,BufReadPost *.erb setl foldmethod=indent nofoldenable
 " autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 " vim-textobj-rubyblock
-runtime macros/matchit.vim
+" runtime macros/matchit.vim
 
 " Auto reload vimrc
-augroup myvimrchooks
-  au!
-  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc,mac_classic_alt.vim so $MYVIMRC | if has('gui_running') | so $MYVIMRC | so $MYGVIMRC | endif
-augroup END
+" augroup myvimrchooks
+"   au!
+"   au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc,mac_classic_alt.vim so $MYVIMRC | if has('gui_running') | so $MYVIMRC | so $MYGVIMRC | endif
+" augroup END
 
 " let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function;m:member'
 
